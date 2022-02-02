@@ -1,0 +1,40 @@
+<h1 class="mt-4">Noticias</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cadastrar Noticia</li>
+</ol>
+
+<div class="container">
+  <form #clienteForm="ngForm">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Titulo:</label>
+          <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title"/>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Descrição:</label>
+          <input type="text" class="form-control" [(ngModel)]="noticia.description" name="description">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-success" (click)="criarNoticia()">
+            <i class="fa fa-save"></i> Salvar
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-danger" routerLink="/cliente">
+            <i class="fa fa-save"></i> Cancelar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
