@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { Noticia } from '../cliente/noticia';
 import { Component, OnInit } from '@angular/core';
 import { CadastrarNoticiaService } from './cadastrar-noticia.service';
-import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-cadastrar-noticia',
@@ -13,7 +13,9 @@ export class CadastrarNoticiaComponent implements OnInit {
   noticia: Noticia
 
   constructor(
-     private service : CadastrarNoticiaService
+     private service : CadastrarNoticiaService,
+     private mudarRota: Router
+
     ) {
     this.noticia = new Noticia;
   }
@@ -22,10 +24,9 @@ export class CadastrarNoticiaComponent implements OnInit {
   }
 
   criarNoticia(){
-    this.service.criarNoticia(this.noticia).subscribe(() => {
-      console.log("OK")
-    } )
-
+    this.service.criarNoticia(this.noticia)
+      .subscribe((res) => {
+        this.mudarRota.navigate(['/cliente']);    } )
   }
 
 }

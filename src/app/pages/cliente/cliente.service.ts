@@ -1,14 +1,13 @@
-import { Noticia } from './../cliente/noticia';
+import { Noticia } from './noticia';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class CadastrarNoticiaService {
+export class ClienteService {
 
   baseUrl = "http://localhost:5000/noticias"
 
@@ -16,10 +15,26 @@ export class CadastrarNoticiaService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  criarNoticia(noticia: Noticia): Observable<Noticia> {
-    return this.http.post<Noticia>(this.baseUrl, noticia)
+  listaNoticia(): Observable<Noticia[]> {
+    return this.http.get<Noticia[]>(this.baseUrl)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  deletaNoticia(id: string) {
+    return this.http.delete<Noticia>(this.baseUrl)
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+  )
+  }
+
+  atualizarNoticia(noticia: Noticia): Observable<Noticia> {
+    return this.http.put<Noticia>(this.baseUrl, noticia)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -38,5 +53,4 @@ export class CadastrarNoticiaService {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
-
 }
