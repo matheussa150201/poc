@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ModalExcluirService } from './modal-excluir.service';
+import { ModalExcluirService } from './excluir-noticia.service';
 
 describe('ModalExcluirService', () => {
   let service: ModalExcluirService;

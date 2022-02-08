@@ -11,10 +11,9 @@ import { HomeComponent } from './home/home.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EditarNoticiaComponent } from './pages/editar-noticia/editar-noticia.component';
-import { ModalExcluirComponent } from './components/modal-excluir/modal-excluir.component';
+import { ModalExcluirComponent } from './pages/excluir-noticia/excluir-noticia.component';
 import { NoticiaComponent } from './pages/noticia/noticia.component';
-
-
+import { LerMaisComponent } from './pages/ler-mais-noticia/ler-mais-noticia.component';
 
 @NgModule({
   declarations: [
@@ -23,16 +22,17 @@ import { NoticiaComponent } from './pages/noticia/noticia.component';
     NoticiaComponent,
     CadastrarNoticiaComponent,
     EditarNoticiaComponent,
-    ModalExcluirComponent
+    ModalExcluirComponent,
+    LerMaisComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TemplateModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

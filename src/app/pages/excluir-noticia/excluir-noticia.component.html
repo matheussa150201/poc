@@ -1,6 +1,6 @@
-<h1 class="mt-4">Noticias</h1>
+<h1 class="mt-4">Excluir Noticias</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Excluir Noticia</li>
+  <li class="breadcrumb-item active">Noticia : {{noticiaRecebida.title}}</li>
 </ol>
 
 <div class="container">
@@ -8,39 +8,30 @@
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label>Titulo:</label>
-          <input type="text" class="form-control" disabled [(ngModel)]="noticiaRecebida.title" name="title"/>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Descrição:</label>
-          <input type="text" class="form-control" disabled [(ngModel)]="noticiaRecebida.description" name="description">
+          <label>{{noticiaRecebida.description}}</label>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-2">
-        <button type="submit" class="btn btn-success"
-        data-toggle="modal" data-target="#excluirModal">
-            <i class="fa fa-save"></i> Excluir
+        <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#excluirModal">
+          Excluir
         </button>
       </div>
     </div>
     <div class="row">
       <div class="col-md-2">
         <button type="submit" class="btn btn-danger" routerLink="/noticia">
-            <i class="fa fa-save"></i> Cancelar
+          Cancelar
         </button>
       </div>
     </div>
   </form>
 </div>
 
-<div class="modal fade" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="excluirModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -51,14 +42,13 @@
       </div>
       <div class="modal-body">
         <label>Senha:</label>
-        <input type="password" class="form-control" >
+        <input type="password" class="form-control">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn " data-dismiss="modal">Voltar</button>
-        <button type="button" class="btn btn-danger"  data-dismiss="modal" (click)="excluir(noticiaRecebida)" routerLink="/noticia">Excluir</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="excluir(noticiaRecebida)"
+          routerLink="/noticia">Excluir</button>
       </div>
     </div>
   </div>
 </div>
-
-

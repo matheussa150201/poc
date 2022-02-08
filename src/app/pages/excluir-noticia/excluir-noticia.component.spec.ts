@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModalExcluirComponent } from './modal-excluir.component';
+import { ModalExcluirComponent } from './excluir-noticia.component';
 
 describe('ModalExcluirComponent', () => {
   let component: ModalExcluirComponent;

@@ -10,22 +10,20 @@
 </div>
 <div class="card">
   <div class="card-body" class="card-noticia" *ngFor='let not of noticia'>
-    <h5 class="card-title"style="font-size: 2rem;"> {{ not.title }}</h5>
-    <p class="card-text" style="font-size: 1rem;"> {{ not.description }} </p>
-    <button type="button" class="btn btn-danger"
-      routerLink="/excluir-noticia/{{ not._id }}"
-      data-toggle="modal"data-target="#exampleModal"
-      (click)="excluir()">
+    <h5 class="card-title" style="font-size: 2rem;"> {{ not.title }}</h5>
+    <p class="card-text description" style="font-size: 1rem;"> {{ not.description }} </p>
+    <button type="button" class="btn btn-danger" style="margin-right:5px;" routerLink="/excluir-noticia/{{ not._id }}"
+      data-toggle="modal" data-target="#exampleModal" (click)="excluir()">
       Excluir</button>
-    <button type="button" class="btn btn-warning"
-     routerLink="/editar-noticia/{{ not._id }}"
-     (click)="editar()">
+    <button type="button" class="btn btn-warning" style="margin-right:5px;" routerLink="/editar-noticia/{{ not._id }}"
+      (click)="editar()">
       Editar
     </button>
-    <button type="button" class="btn btn-primary">
-     Ler mais
-   </button>
+    <button type="button" class="btn btn-primary" routerLink="/ler-mais/{{ not._id }}">
+      Ler mais
+    </button>
     <app-editar-noticia *ngIf="bolEditar" [noticiaRecebida]="noticiaCompartilhada"></app-editar-noticia>
-    <app-modal-excluir *ngIf="bolExcluir" [noticiaRecebida]="noticiaCompartilhada"></app-modal-excluir>
+    <app-excluir-noticia *ngIf="bolExcluir" [noticiaRecebida]="noticiaCompartilhada"></app-excluir-noticia>
+    <app-editar-noticia *ngIf="bolLerMais" [noticiaRecebida]="noticiaCompartilhada"></app-editar-noticia>
   </div>
 </div>
