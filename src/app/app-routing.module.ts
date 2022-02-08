@@ -8,8 +8,9 @@ import { NoticiaComponent } from './pages/noticia/noticia.component';
 
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'noticia', component: NoticiaComponent},
+  { path: 'noticia', component: NoticiaComponent },
   { path: 'excluir-noticia/:_id', component: ModalExcluirComponent },
   { path: 'cadastrar-noticia', component: CadastrarNoticiaComponent },
   { path: 'editar-noticia/:_id', component: EditarNoticiaComponent },

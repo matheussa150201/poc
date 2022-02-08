@@ -22,6 +22,9 @@
      (click)="editar()">
       Editar
     </button>
+    <button type="button" class="btn btn-primary">
+     Ler mais
+   </button>
     <app-editar-noticia *ngIf="bolEditar" [noticiaRecebida]="noticiaCompartilhada"></app-editar-noticia>
     <app-modal-excluir *ngIf="bolExcluir" [noticiaRecebida]="noticiaCompartilhada"></app-modal-excluir>
   </div>

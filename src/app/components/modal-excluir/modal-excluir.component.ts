@@ -1,8 +1,8 @@
 import { Noticia } from '../../pages/noticia/noticia';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ClienteService } from '../../pages/noticia/noticia.service';
-import { EditarNoticiaService } from './../../pages/editar-noticia/editar-noticia.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NoticiaService } from '../../pages/noticia/noticia.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { ModalExcluirService } from './modal-excluir.service';
 
 @Component({
   selector: 'app-modal-excluir',
@@ -17,10 +17,10 @@ export class ModalExcluirComponent implements OnInit {
   id: string;
 
   constructor(
-    private service : EditarNoticiaService,
-    private clienteService: ClienteService,
-    private mudarRota: Router,
+    private service : ModalExcluirService,
+    private noticiaService: NoticiaService,
     private router: ActivatedRoute,
+    private mudarRota: Router
   ) { }
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class ModalExcluirComponent implements OnInit {
     params.subscribe( urlParams => {
       this.id = urlParams["_id"]
       if(this.id){
-        this.clienteService.obterNoticiaPorId(this.id).subscribe(
+        this.noticiaService.obterNoticiaPorId(this.id).subscribe(
           res => this.noticiaRecebida = res,
            error => this.noticiaRecebida = new Noticia())
       }
@@ -37,14 +37,13 @@ export class ModalExcluirComponent implements OnInit {
 
    excluir(noticia: Noticia){
     const id = noticia._id
-    this.clienteService.deletaNoticia(id)
+    this.service.deletaNoticia(id)
       .subscribe(
         response => {
-          this.ngOnInit()
+          this.mudarRota.navigate(['/noticia']);
         },
         error => {
           console.log(error);
         })
   }
-
 }

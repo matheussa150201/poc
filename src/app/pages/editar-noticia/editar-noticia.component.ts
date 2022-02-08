@@ -1,7 +1,7 @@
 import { Noticia } from '../noticia/noticia';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { ClienteService } from '../noticia/noticia.service';
+import { NoticiaService } from '../noticia/noticia.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { EditarNoticiaService } from './editar-noticia.service';
 
@@ -24,7 +24,7 @@ export class EditarNoticiaComponent implements OnInit {
 
   constructor(
     private service : EditarNoticiaService,
-    private clienteService: ClienteService,
+    private noticiaService: NoticiaService,
     private mudarRota: Router,
     private router: ActivatedRoute,
   ) { }
@@ -34,7 +34,7 @@ export class EditarNoticiaComponent implements OnInit {
     params.subscribe( urlParams => {
       this.id = urlParams["_id"]
       if(this.id){
-        this.clienteService.obterNoticiaPorId(this.id).subscribe(
+        this.noticiaService.obterNoticiaPorId(this.id).subscribe(
           res => this.noticiaRecebida = res,
            error => this.noticiaRecebida = new Noticia())
       }
@@ -46,7 +46,6 @@ export class EditarNoticiaComponent implements OnInit {
     .subscribe(res => {
       console.log(res)
     })
-    // this.mudarRota.navigate(['/cliente']);
    }
 
 }

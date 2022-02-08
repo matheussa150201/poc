@@ -1,6 +1,6 @@
 import { Noticia } from './noticia';
 import { Component, OnInit, Output } from '@angular/core';
-import { ClienteService } from './noticia.service';
+import { NoticiaService } from './noticia.service';
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -18,12 +18,13 @@ export class NoticiaComponent implements OnInit {
   id: number;
 
   noticiaList: Noticia = {
+    _id: '',
     title: '',
     description: '',
   };
 
   constructor(
-    private service: ClienteService,
+    private service: NoticiaService,
     private router: ActivatedRoute,
     private mudarRota: Router
   ) {}

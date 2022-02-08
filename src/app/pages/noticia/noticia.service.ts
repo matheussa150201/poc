@@ -7,7 +7,7 @@ import { retry, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class ClienteService {
+export class NoticiaService {
 
   baseUrl = "http://localhost:5000/noticias"
 
@@ -23,14 +23,6 @@ export class ClienteService {
       retry(1),
       catchError(this.handleError)
     )
-  }
-
-  deletaNoticia(id: string) {
-    return this.http.delete(`${this.baseUrl}?id=${id}`)
-    .pipe(
-    retry(1),
-    catchError(this.handleError)
-  )
   }
 
   obterNoticiaPorId(id: string): Observable<Noticia>{

@@ -1,34 +1,28 @@
-import { Noticia } from '../noticia/noticia';
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EditarNoticiaService {
+export class ModalExcluirService {
+
 
   baseUrl = "http://localhost:5000/noticias"
-
-  noticiaRecebida: Noticia = {
-    id: '',
-    title: '',
-    description: ''
-    }
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-
   constructor(private http: HttpClient) { }
 
-  atualizarNoticia(noticiaAtualizada: Noticia): Observable<Noticia> {
-    this.noticiaRecebida.id = noticiaAtualizada._id
-    this.noticiaRecebida.title = noticiaAtualizada.title
-    this.noticiaRecebida.description = noticiaAtualizada.description
-    return this.http.put<Noticia>(this.baseUrl, this.noticiaRecebida)
+  deletaNoticia(id: string) {
+    return this.http.delete(`${this.baseUrl}?id=${id}`)
+    .pipe(
+    retry(1),
+    catchError(this.handleError)
+  )
   }
 
   handleError(error: HttpErrorResponse) {
