@@ -1,5 +1,7 @@
+import { ClienteService } from '../noticia/noticia.service';
+import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
-import { Noticia } from '../cliente/noticia';
+import { Noticia } from '../noticia/noticia';
 import { Component, OnInit } from '@angular/core';
 import { CadastrarNoticiaService } from './cadastrar-noticia.service';
 
@@ -11,22 +13,35 @@ import { CadastrarNoticiaService } from './cadastrar-noticia.service';
 export class CadastrarNoticiaComponent implements OnInit {
 
   noticia: Noticia
+  id: string;
 
   constructor(
      private service : CadastrarNoticiaService,
-     private mudarRota: Router
+     private clienteService: ClienteService,
+     private mudarRota: Router,
+     private router: ActivatedRoute,
 
     ) {
     this.noticia = new Noticia;
   }
 
   ngOnInit() {
-  }
+    let params = this.router.params
+    params.subscribe( urlParams => {
+      this.id = urlParams["_id"]
+      console.log(urlParams)
+      if(this.id){
+        this.clienteService.obterNoticiaPorId(this.id).subscribe(
+          res => this.noticia = res,
+           error => this.noticia = new Noticia())
+      }
+    })
+    }
 
-  criarNoticia(){
-    this.service.criarNoticia(this.noticia)
+  salvarNoticia(){
+      this.service.criarNoticia(this.noticia)
       .subscribe((res) => {
-        this.mudarRota.navigate(['/cliente']);    } )
+        this.mudarRota.navigate(['/noticia']);
+      } )
   }
-
 }

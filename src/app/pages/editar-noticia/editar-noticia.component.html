@@ -1,6 +1,6 @@
 <h1 class="mt-4">Noticias</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Cadastrar Noticia</li>
+    <li class="breadcrumb-item active">Editar Noticia</li>
 </ol>
 
 <div class="container">
@@ -9,7 +9,7 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Titulo:</label>
-          <input type="text" class="form-control" [(ngModel)]="noticia.title" name="title"/>
+          <input type="text" class="form-control" [(ngModel)]="noticiaRecebida.title" name="title"/>
         </div>
       </div>
     </div>
@@ -17,15 +17,15 @@
       <div class="col-md-6">
         <div class="form-group">
           <label>Descrição:</label>
-          <input type="text" class="form-control" [(ngModel)]="noticia.description" name="description">
+          <input type="text" class="form-control" [(ngModel)]="noticiaRecebida.description" name="description">
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-2">
-        <button type="submit" class="btn btn-success" (click)="salvarNoticia()">
-            <i class="fa fa-save"></i> Salvar
+        <button type="submit" class="btn btn-success" (click)="editarNoticia()">
+            <i class="fa fa-save"></i> Editar
         </button>
       </div>
     </div>
@@ -38,3 +38,4 @@
     </div>
   </form>
 </div>
+

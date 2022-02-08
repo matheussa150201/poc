@@ -1,0 +1,28 @@
+<h1 class="mt-4">Noticias</h1>
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item active">Noticias diarias</li>
+</ol>
+
+<div class="row">
+  <div class="col-md-3">
+    <button type="button" class="btn btn-success" routerLink="/cadastrar-noticia"> Adicionar Noticia</button>
+  </div>
+</div>
+<div class="card">
+  <div class="card-body" class="card-noticia" *ngFor='let not of noticia'>
+    <h5 class="card-title"style="font-size: 2rem;"> {{ not.title }}</h5>
+    <p class="card-text" style="font-size: 1rem;"> {{ not.description }} </p>
+    <button type="button" class="btn btn-danger"
+      routerLink="/excluir-noticia/{{ not._id }}"
+      data-toggle="modal"data-target="#exampleModal"
+      (click)="excluir()">
+      Excluir</button>
+    <button type="button" class="btn btn-warning"
+     routerLink="/editar-noticia/{{ not._id }}"
+     (click)="editar()">
+      Editar
+    </button>
+    <app-editar-noticia *ngIf="bolEditar" [noticiaRecebida]="noticiaCompartilhada"></app-editar-noticia>
+    <app-modal-excluir *ngIf="bolExcluir" [noticiaRecebida]="noticiaCompartilhada"></app-modal-excluir>
+  </div>
+</div>
